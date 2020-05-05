@@ -1,5 +1,7 @@
 # laravel-admin iframe-tabs
 
+原作者里面 config 不兼容我另外的代码，修改下做写死处理。
+
 ## Installation
 
 Run :
