@@ -1,9 +1,9 @@
 {
-    "name": "ichynul/iframe-tabs",
+    "name": "adzon/iframe-tabs",
     "description": "laravel-admin extension iframe-tabs",
     "type": "library",
     "keywords": ["laravel-admin", "extension"],
-    "homepage": "https://github.com/ichynul/iframe-tabs",
+    "homepage": "https://github.com/adzon/iframe-tabs",
     "license": "MIT",
     "authors": [
         {
