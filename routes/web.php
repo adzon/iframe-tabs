@@ -7,7 +7,7 @@ use Encore\Admin\Controllers\AuthController;
 
 Route::get('/', IframeTabsController::class . '@index')->name('iframes.index');
 
-Route::get('/dashboard', IframeTabs::config('home_action', IframeTabsController::class . '@dashboard'))->name('iframes.dashboard');
+Route::get('/dashboard', \App\Admin\Controllers\HomeController::class . '@index'))->name('iframes.dashboard');
 
 if (IframeTabs::config('force_login_in_top', true)) {
 
