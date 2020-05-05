@@ -32,7 +32,7 @@ class IframeTabsController extends Controller
                 'refresh_succeeded' => trans('admin.refresh_succeeded'),
             ],
             'home_uri' => admin_base_path('dashboard'),
-            'home_title' => IframeTabs::config('home_title', 'Index'),
+            'home_title' => '控制面板',
             'home_icon' => IframeTabs::config('home_icon', 'fa-home'),
             'use_icon' => IframeTabs::config('use_icon', true) ? '1' : '',
             'pass_urls' => implode(',', IframeTabs::config('pass_urls', ['/auth/logout'])),
