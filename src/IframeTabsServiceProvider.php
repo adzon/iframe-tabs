@@ -118,9 +118,9 @@ class IframeTabsServiceProvider extends ServiceProvider
 
     protected function initSubPage()
     {
-        if (!in_array(IframeTabs::config('bind_urls', 'none'), ['new_tab', 'popup'])) {
-            return;
-        }
+//         if (!in_array(IframeTabs::config('bind_urls', 'none'), ['new_tab', 'popup'])) {
+//             return;
+//         }
 
         $method = strtolower(request()->method());
         $session = request()->session();
