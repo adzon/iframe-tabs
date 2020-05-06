@@ -274,6 +274,9 @@ class IframeTabsServiceProvider extends ServiceProvider
         if ((top.bind_urls =='new_tab' || top.bind_urls =='popup') && top.bind_selecter)
         {
             $(top.bind_selecter).click(function(){
+            
+                $('#grid-context-menu .dropdown-menu').hide();
+                
                 var url = $(this).attr('href');
                 if (!url || url == '#' || /^javascript|\(|\)/i.test(url)) {
                     return;
