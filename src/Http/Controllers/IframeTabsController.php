@@ -39,7 +39,7 @@ class IframeTabsController extends Controller
             'iframes_index' => admin_url(),
             'tabs_left' => IframeTabs::config('tabs_left', '42'),
             'bind_urls' => 'new_tab',
-            'bind_selecter' => '.box-body table.table tbody a.grid-row-view,.box-body table.table tbody a.grid-row-edit,.box-header .pull-right .btn-success,.popup,.box-body table.table tbody a.dropdown-toggle',
+            'bind_selecter' => '.box-body table.table tbody a.grid-row-view,.box-body table.table tbody a.grid-row-edit,.box-header .pull-right .btn-success,.popup,.box-body table.table tbody ul.dropdown-menu li a',
         ];
 
         \View::share($items);
