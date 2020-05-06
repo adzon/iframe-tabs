@@ -38,7 +38,7 @@ class IframeTabsController extends Controller
             'pass_urls' => implode(',', IframeTabs::config('pass_urls', ['/auth/logout'])),
             'iframes_index' => admin_url(),
             'tabs_left' => IframeTabs::config('tabs_left', '42'),
-            'bind_urls' => IframeTabs::config('bind_urls', 'none'),
+            'bind_urls' => 'pop',
             'bind_selecter' => IframeTabs::config('bind_selecter', '.box-body table.table tbody a.grid-row-view,.box-body table.table tbody a.grid-row-edit,.box-header .pull-right .btn-success'),
         ];
 
