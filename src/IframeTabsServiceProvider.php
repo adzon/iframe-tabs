@@ -275,7 +275,7 @@ class IframeTabsServiceProvider extends ServiceProvider
         {
             $(top.bind_selecter).click(function(){
             
-                $('#grid-context-menu .dropdown-menu').hide();
+               // $('#grid-context-menu .dropdown-menu').hide();
                 
                 var url = $(this).attr('href');
                 if (!url || url == '#' || /^javascript|\(|\)/i.test(url)) {
