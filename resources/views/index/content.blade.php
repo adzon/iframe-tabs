@@ -17,7 +17,7 @@
         window.refresh_succeeded = "刷新成功";
 
         window.use_icon = "1";
-        window.pass_urls = "{{implode(',', ['/auth/logout']) }}";
+        window.pass_urls = "{{implode(',', ['/auth/logout']) }}".split(',');
         window.home_title = '控制面板';
         window.home_uri = "{{ admin_base_path('dashboard') }}";
         window.home_icon = 'fa-home';
