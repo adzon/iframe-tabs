@@ -4,12 +4,10 @@
 </div>
 
 <script>
-
-    $(function () {
+    $(function() {
 
         //Note! You cannot use both layout-boxed and fixed at the same time. Anything else can be mixed together.
-        if(!$('body').hasClass('layout-boxed'))
-        {
+        if (!$('body').hasClass('layout-boxed')) {
             $('body').addClass('fixed'); //layout Fixed: use the class .fixed to get a fixed header and sidebar.
         }
 
@@ -18,23 +16,23 @@
         window.open_in_pop = "弹出窗打开";
         window.refresh_succeeded = "刷新成功";
 
-        window.use_icon = "{{ $use_icon }}" == '1';
-        window.pass_urls = '{{ $pass_urls }}'.split(',');
-        window.home_title = '{{ $home_title }}';
-        window.home_uri = '{{ $home_uri }}';
-        window.home_icon = '{{ $home_icon }}';
-        window.iframes_index = '{{ $iframes_index }}';
-        window.tabs_left = '{{ $tabs_left }}';
-        window.bind_urls = '{{ $bind_urls }}';
-        window.bind_selecter = '{{ $bind_selecter }}';
-
+        window.use_icon = "1";
+        window.pass_urls = "{{implode(',', ['/auth/logout']) }}";
+        window.home_title = '控制面板';
+        window.home_uri = "{{ admin_base_path('dashboard') }}";
+        window.home_icon = 'fa-home';
+        window.iframes_index = "{{ admin_url() }}";
+        window.tabs_left = "42",
+        window.bind_urls = 'new_tab',
+        window.bind_selecter = '.box-body table.table tbody a.grid-row-view,.box-body table.table tbody a.grid-row-edit,.box-header .pull-right .btn-success,.popup,.box-body table.table tbody ul.dropdown-menu li a',
+        
         window.Pops = [];
 
-        window.openPop = function (url, title, area) {
+        window.openPop = function(url, title, area) {
             if (!area) {
                 area = [$('#tab-content').width() + 'px', ($('#tab-content').height() - 5) + 'px'];
             }
-            
+
             var index = layer.open({
                 content: url,
                 type: 2,
@@ -51,7 +49,7 @@
             return index;
         }
 
-        window.openTab = function (url, title, icon, page_id, close, urlType) {
+        window.openTab = function(url, title, icon, page_id, close, urlType) {
             if (!url) {
                 alert('url is empty.');
                 return;
@@ -76,24 +74,24 @@
 
         if (!window.layer) {
             window.layer = {
-                load: function () {
+                load: function() {
                     var html = '<div style="z-index:999;margin:0 auto;position:fixed;top:90px;left:50%;" class="loading-message"><img src="/vendor/laravel-admin-ext/iframe-tabs/images/loading-spinner-grey.gif" /></div>';
                     $('.tab-content').append(html);
                     return 1;
                 },
-                close: function (index) {
+                close: function(index) {
                     $('.tab-content .loading-message').remove();
                 },
-                open: function () {
+                open: function() {
                     alert('layer.js dose not work.');
                 }
             };
         }
 
-        $('body').on('click', '#tab-menu a.menu_tab', function () {
+        $('body').on('click', '#tab-menu a.menu_tab', function() {
             var pageId = getPageId(this);
             var $ele = null;
-            $(".sidebar-menu li a").each(function () {
+            $(".sidebar-menu li a").each(function() {
                 var $meun = $(this);
                 if ($meun.attr('data-pageid') == pageId) {
                     $ele = $meun;
@@ -102,7 +100,7 @@
             });
             if ($ele) {
                 $ele.parents('.treeview').not('.active').find('> a').trigger('click');
-                setTimeout(function () {
+                setTimeout(function() {
                     var $parent = $ele.parent().addClass('active');
                     $parent.siblings('.treeview.active').removeClass('active');
                     $parent.siblings().removeClass('active').find('li').removeClass('active')
@@ -110,7 +108,7 @@
             }
         });
 
-        $('body').on('click', '.sidebar-menu li a,.navbar-nav>li a,.sidebar .user-panel a,.sidebar-form .dropdown-menu li a', function () {
+        $('body').on('click', '.sidebar-menu li a,.navbar-nav>li a,.sidebar .user-panel a,.sidebar-form .dropdown-menu li a', function() {
             if ($(this).hasClass('container-refresh')) {
                 var pageId = getActivePageId();
 
@@ -118,7 +116,9 @@
 
                 iframe[0].contentWindow.$.admin.reload();
 
-                $.admin.toastr.success(refresh_succeeded, '', { positionClass: "toast-top-center" });
+                $.admin.toastr.success(refresh_succeeded, '', {
+                    positionClass: "toast-top-center"
+                });
 
                 return false;
             }
@@ -148,8 +148,8 @@
                 icon = $(this).find('i.fa').prop("outerHTML");
             }
             var span = $(this).find('span');
-            
-            var path = url.replace(/^(https?:\/\/[^\/]+?)(\/.+)$/,'$2');
+
+            var path = url.replace(/^(https?:\/\/[^\/]+?)(\/.+)$/, '$2');
 
             var id = path == window.home_uri ? '_admin_dashboard' : path.replace(/\W/g, '_');
             addTabs({
@@ -189,7 +189,7 @@
             $('body').html('....');
         }
 
-        $('body').on('click', '.main-header a.logo', function () {
+        $('body').on('click', '.main-header a.logo', function() {
             return false;
         });
 
@@ -206,19 +206,18 @@
             'width': '100%'
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             $('.container-refresh').off('click');
         }, 1000);
 
-        window.handleIframeContent = function ()
-        {
+        window.handleIframeContent = function() {
             $(".tab_iframe").css({
                 height: "100%",
                 width: "100%"
             });
         }
 
-        $('.content-wrapper,#app,#tab-content').css('height','100%');
+        $('.content-wrapper,#app,#tab-content').css('height', '100%');
 
     });
 </script>
