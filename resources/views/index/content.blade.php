@@ -13,10 +13,10 @@
             $('body').addClass('fixed'); //layout Fixed: use the class .fixed to get a fixed header and sidebar.
         }
 
-        window.refresh_current = "{{ $trans['refresh_current'] }}";
-        window.open_in_new = "{{ $trans['open_in_new'] }}";
-        window.open_in_pop = "{{ $trans['open_in_pop'] }}";
-        window.refresh_succeeded = "{{ $trans['refresh_succeeded'] }}";
+        window.refresh_current = "刷新当前";
+        window.open_in_new = "新窗口打开";
+        window.open_in_pop = "弹出窗打开";
+        window.refresh_succeeded = "刷新成功";
 
         window.use_icon = "{{ $use_icon }}" == '1';
         window.pass_urls = '{{ $pass_urls }}'.split(',');
